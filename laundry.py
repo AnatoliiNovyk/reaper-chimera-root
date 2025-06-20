@@ -100,7 +100,7 @@ def main():
     })
     
     signed_tx_approve = w3.eth.account.sign_transaction(tx_approve, private_key)
-    tx_hash_approve = w3.eth.send_raw_transaction(signed_tx_approve.rawTransaction)
+    tx_hash_approve = w3.eth.send_raw_transaction(signed_tx_approve.raw_transaction)
     print(f"Approve transaction sent. Hash: {tx_hash_approve.hex()}. Waiting for confirmation...")
     
     w3.eth.wait_for_transaction_receipt(tx_hash_approve)
