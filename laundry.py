@@ -73,7 +73,7 @@ def main():
     })
 
     signed_tx = w3.eth.account.sign_transaction(tx_swap_matic, private_key)
-    tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed_tx.raw_transaction)
     print(f"Swap transaction sent. Hash: {tx_hash.hex()}. Waiting for confirmation...")
     
     w3.eth.wait_for_transaction_receipt(tx_hash)
