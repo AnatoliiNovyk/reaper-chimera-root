@@ -68,7 +68,7 @@ def main():
     })
 
     signed_tx = w3.eth.account.sign_transaction(tx_deploy, private_key)
-    tx_hash = w3.eth.send_raw_transaction(signed_tx.rawTransaction)
+    tx_hash = w3.eth.send_raw_transaction(signed_tx.raw_transaction)
     print(f"Deployment transaction sent. Hash: {tx_hash.hex()}. Waiting for confirmation...")
     
     tx_receipt = w3.eth.wait_for_transaction_receipt(tx_hash)
@@ -91,7 +91,7 @@ def main():
     })
     
     signed_attack_tx = w3.eth.account.sign_transaction(tx_attack, private_key)
-    attack_tx_hash = w3.eth.send_raw_transaction(signed_attack_tx.rawTransaction)
+    attack_tx_hash = w3.eth.send_raw_transaction(signed_attack_tx.raw_transaction)
     print(f"Attack transaction sent. Hash: {attack_tx_hash.hex()}. Waiting for confirmation...")
     
     w3.eth.wait_for_transaction_receipt(attack_tx_hash)
