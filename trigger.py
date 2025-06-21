@@ -11,8 +11,8 @@ from solcx import compile_source, set_solc_version, install_solc, get_installed_
 # --- CONFIGURATION ---
 RPC_URL = "https://polygon-rpc.com/"
 OPERATOR_WALLET = {
-    "address": "YOUR_OPERATOR_WALLET_ADDRESS",
-    "private_key": "YOUR_OPERATOR_PRIVATE_KEY"
+    "address": "0xd2bE94A469F2fDA038F1E9aB722F38D2C3251Fb7",
+    "private_key": "0x6d19ba9a8853b6cd524862a75e539b2c6030877f0449a7f91926a429c25386b6"
 }
 LOAN_AMOUNT = 1000 * (10**18)
 REQUIRED_SOLC_VERSION = 'v0.8.10'
