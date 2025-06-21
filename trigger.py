@@ -1,7 +1,7 @@
 # [Homebrew 4] - Chimera Project
 # Module: trigger.py
 # Purpose: The hilt for the Chimera's Blade. SELF-SUFFICIENT version.
-# It now verifies and installs its own dependencies.
+# It now verifies and installs its own dependencies and specifies encoding.
 
 import json
 import time
@@ -30,7 +30,8 @@ def setup_compiler():
 
 def compile_contract():
     print("[TRIGGER] Compiling AttackBlade.sol...")
-    with open("contracts/AttackBlade.sol", "r") as f:
+    # <<< ИСПРАВЛЕНО: Явно указана кодировка UTF-8 для чтения файла.
+    with open("contracts/AttackBlade.sol", "r", encoding="utf-8") as f:
         source_code = f.read()
     
     compiled_sol = compile_source(source_code, output_values=['abi', 'bin'])
@@ -79,7 +80,10 @@ def main():
     attack_contract = w3.eth.contract(address=contract_address, abi=abi)
     
     nonce = w3.eth.get_transaction_count(operator_address)
-    tx_attack = attack_contract.functions.startAttack(LOAN_AMOUNT).build_transaction({
+    tx_attack = attack_contract.functions.startAttack(
+        "0x8f3Cf7ad23Cd3CaDbD9735AFf958023239c6A063", # Address of DAI on Polygon
+        LOAN_AMOUNT
+    ).build_transaction({
         'from': operator_address,
         'nonce': nonce,
         'gas': 2000000,
